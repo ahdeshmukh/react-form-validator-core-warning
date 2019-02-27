@@ -40,7 +40,7 @@ class User extends Component {
         this.props.addSessionUser({"name": this.state.userName});
         this.setState({ userName: "", formSubmitInProgress: false });
         
-        // this mitigates the warning. comment above 2 lines and uncomment setTimeout function and refresh the page
+        // this does not produce the warning. comment above 2 lines and uncomment setTimeout function and refresh the page
         /*setTimeout(
             function() {
                 this.props.addSessionUser({"name": this.state.userName});
@@ -48,7 +48,7 @@ class User extends Component {
             }
             .bind(this),
             1000
-        ); */  
+        );*/ 
     }
 
     render() {
@@ -64,7 +64,10 @@ class User extends Component {
         return (
             <ValidatorForm ref="form" onSubmit={this.handleSubmit} >
             
-                {/* This works fine, even without setTimeout in handleSubmit function */}
+                {/* TextBox component works fine, even without setTimeout in handleSubmit function. 
+                To confirm this, uncomment TextBox component and comment out InputTextValidator.
+                Don't forget to uncomment import TextBox from "./TextBox"; at the top of the page  */}
+                
                 {/* <TextBox id="userName" onChange={this.handleChange} value={this.state.userName} /> */}
                 
                 {/* This throws a warning onSubmit */}
